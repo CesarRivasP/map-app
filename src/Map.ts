@@ -1,5 +1,6 @@
 import { Passenger } from './Passenger';
 import { Driver } from './Driver';
+import { Person } from './Person';
 
 export class Map {
   private googleMaps: google.maps.Map;
@@ -17,7 +18,8 @@ export class Map {
     );
   }
 
-  handleAddPassengerMarker = (passenger: Passenger) => {
+  // Primera solucion -- Se va a mejorar mas adelante
+  /* handleAddPassengerMarker = (passenger: Passenger) => {
     new google.maps.Marker({
       map: this.googleMaps,
       position: {
@@ -33,6 +35,17 @@ export class Map {
       position: {
         lat: parseInt(driver.handleGetLocation.lat),
         lng: parseInt(driver.handleGetLocation.long)
+      }
+    });
+  } */
+
+  // Segunda Solucion
+  handleAddMarker = (person: Person) => {
+    new google.maps.Marker({
+      map: this.googleMaps,
+      position: {
+        lat: parseInt(person.handleGetLocation.lat),
+        lng: parseInt(person.handleGetLocation.long)
       }
     });
   }
