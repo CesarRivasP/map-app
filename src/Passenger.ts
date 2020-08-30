@@ -1,18 +1,14 @@
 import Faker from 'faker';
+import { Person } from './Person';
 
-
-export class Passenger {
-  private readonly name: string; // Para que solo sea asignable dentro del construtor
-  private readonly location: {
-    lat: string,
-    long: string
-  };
-
+export class Passenger extends Person {
   constructor(){
-    this.name = Faker.name.findName();
-    this.location = {
-      lat: Faker.address.latitude(),
-      long: Faker.address.longitude()
-    };
+    super(  // SUper nos permite acceder al constructor de la clase base
+      Faker.name.findName(),
+      {
+        lat: Faker.address.latitude(),
+        long: Faker.address.longitude()
+      }
+    );
   }
 }
