@@ -1,3 +1,6 @@
+import { Passenger } from './Passenger';
+import { Driver } from './Driver';
+
 export class Map {
   private googleMaps: google.maps.Map;
 
@@ -12,6 +15,26 @@ export class Map {
         }
       }
     );
+  }
+
+  handleAddPassengerMarker = (passenger: Passenger) => {
+    new google.maps.Marker({
+      map: this.googleMaps,
+      position: {
+        lat: parseInt(passenger.handleGetLocation.lat),
+        lng: parseInt(passenger.handleGetLocation.long)
+      }
+    });
+  }
+
+  handleAddDriverMarker = (driver: Driver) => {
+    new google.maps.Marker({
+      map: this.googleMaps,
+      position: {
+        lat: parseInt(driver.handleGetLocation.lat),
+        lng: parseInt(driver.handleGetLocation.long)
+      }
+    });
   }
 }
 
