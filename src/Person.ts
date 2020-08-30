@@ -12,4 +12,8 @@ export abstract class Person {
       long: location.long
     }
   }
+
+  get handleGetLocation(){
+    return this.location;
+  }
 }
