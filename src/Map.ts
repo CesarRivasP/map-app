@@ -1,9 +1,11 @@
 import { Passenger } from './Passenger';
 import { Driver } from './Driver';
 import { Person } from './Person';
+import { MapGeocoder } from './MapGeocoder';
 
 export class Map {
   private googleMaps: google.maps.Map;
+  private geocoder: MapGeocoder;
 
   constructor(divId: string){
     this.googleMaps = new google.maps.Map(
@@ -16,6 +18,8 @@ export class Map {
         }
       }
     );
+    
+    this.geocoder = new MapGeocoder(this.googleMaps);
   }
 
   // Primera solucion -- Se va a mejorar mas adelante
@@ -51,7 +55,7 @@ export class Map {
   } */
 
   // Tercera Solucion
-  handleAddMarker = (mappable: Mappable) => {
+  handleAddMarker = (mappable: Mappable): void => {
     const infoWindows = new google.maps.InfoWindow({
       content: 'Hello world'
     });
@@ -61,12 +65,15 @@ export class Map {
       position: {
         lat: parseInt(mappable.handleGetLocation.lat),
         lng: parseInt(mappable.handleGetLocation.long)
-      }
+      },
     });
 
-    marker.addListener('click', () => {
+    // Ultima solucion
+    /*  marker.addListener('click', () => {
       infoWindows.open(this.googleMaps, marker);
-    });
+    }); */
+
+    this.geocoder.handleAddMarkerInfo(marker, mappable);
   }
 }
 
