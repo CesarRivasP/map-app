@@ -75,7 +75,12 @@ export class Map {
 
     this.geocoder.handleAddMarkerInfo(marker, mappable);
   }
+
+  searchText = (options: SearchOptions): void => {
+    this.geocoder.searchText(options);
+  }
 }
+
 
 // google // un nasmespace es un indicativo de que este archivo de definicion va a quedar a nivel global en nuestro proyecto
 // Por lo que podemos hacer uso de google sin necesidad de importar la libreria
