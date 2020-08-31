@@ -40,12 +40,23 @@ export class Map {
   } */
 
   // Segunda Solucion
-  handleAddMarker = (person: Person) => {
+  /* handleAddMarker = (person: Person) => {
     new google.maps.Marker({
       map: this.googleMaps,
       position: {
         lat: parseInt(person.handleGetLocation.lat),
         lng: parseInt(person.handleGetLocation.long)
+      }
+    });
+  } */
+
+  // Tercera Solucion
+  handleAddMarker = (mappable: Mappable) => {
+    new google.maps.Marker({
+      map: this.googleMaps,
+      position: {
+        lat: parseInt(mappable.handleGetLocation.lat),
+        lng: parseInt(mappable.handleGetLocation.long)
       }
     });
   }
