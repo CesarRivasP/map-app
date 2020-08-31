@@ -13,9 +13,9 @@ map.handleAddPassengerMarker(passenger);
 */
 
 // Segunda solucion para los marcadores
-const drive = new Driver();
+const driver = new Driver();
 const passenger = new Passenger();
 const myHome = new MyHome(passenger);
-map.handleAddMarker(drive);
+map.handleAddMarker(driver);
 map.handleAddMarker(passenger); 
 map.handleAddMarker(myHome); 
