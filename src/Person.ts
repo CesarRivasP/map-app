@@ -1,4 +1,4 @@
-export abstract class Person {
+export abstract class Person implements Mappable {
   protected name: string;  // Para que solo sea asignable dentro del construtor
   protected location: {
     lat: string;
