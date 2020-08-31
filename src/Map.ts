@@ -52,12 +52,20 @@ export class Map {
 
   // Tercera Solucion
   handleAddMarker = (mappable: Mappable) => {
-    new google.maps.Marker({
+    const infoWindows = new google.maps.InfoWindow({
+      content: 'Hello world'
+    });
+
+    const marker = new google.maps.Marker({
       map: this.googleMaps,
       position: {
         lat: parseInt(mappable.handleGetLocation.lat),
         lng: parseInt(mappable.handleGetLocation.long)
       }
+    });
+
+    marker.addListener('click', () => {
+      infoWindows.open(this.googleMaps, marker);
     });
   }
 }
