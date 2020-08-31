@@ -19,3 +19,7 @@ const myHome = new MyHome(passenger);
 map.handleAddMarker(driver);
 map.handleAddMarker(passenger); 
 map.handleAddMarker(myHome); 
+map.searchText({
+  input: <HTMLInputElement>document.getElementById('address')!,
+  searchButton: <HTMLButtonElement>document.getElementById('searchButton')!,
+});
