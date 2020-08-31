@@ -38,4 +38,39 @@ export class MapGeocoder {
       infoWindows.open(this.map, marker);
     });
   }
+
+  searchText = (options: SearchOptions): void => {
+    options.searchButton.addEventListener('click', () => {
+      const address = options.input.value;
+
+      //Not working because not billing google services account 
+      /* this.geocoder.geocode({ "address": address }, (result, status) => {
+        if(status === 'OK'){
+          this.map.setZoom(16);
+          this.map.setCenter(result[0].geometry.location);
+
+          new google.maps.Marker({
+            map: this.map,
+            position: result[0].geometry.location
+          });
+        }
+        else {
+          window.alert(`Error en el resultado de la geolocalizacion ${status}`);
+        }
+      }) */
+
+      const location = {
+        lat: 10.5063936,
+        lng: -66.8915810
+      };
+
+      this.map.setZoom(16);
+      this.map.setCenter(location);
+
+      new google.maps.Marker({
+        map: this.map,
+        position: location
+      });
+    });
+  }
 }
